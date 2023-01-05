@@ -16,7 +16,7 @@ exports.create = (req, res) => {
   const company = {
     nameCompany: req.body.nameCompany,
     direction: req.body.direction,
-    nit: req.body.nit,
+    nit: parseInt(req.body.nit),
     telephone: req.body.telephone,
   };
 
@@ -28,7 +28,7 @@ exports.create = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the company."
+          err.message + "sdfsdf " || "Some error occurred while creating the company."
       });
     });
 };

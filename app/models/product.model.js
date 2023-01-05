@@ -1,22 +1,20 @@
-module.exports = (sequelize, Sequelize) => {  
-  const Company = require("./company.model");
+const Company = require("./company.model");
 
-
-  const User = sequelize.define("users", {
+module.exports = (sequelize, Sequelize) => {
+  const Product = sequelize.define("products", {
     id: {
-      type: Sequelize.INTEGER,
+      primaryKey: true,
       autoIncrement: true,
-      primaryKey: true
+      type: Sequelize.INTEGER
     },
-    username: {
+    code: {
       type: Sequelize.STRING
     },
-    email: {
-      type: Sequelize.STRING,
-      isEmail: true
-    },
-    password: {
+    productName: {
       type: Sequelize.STRING
+    },
+    stock: {
+      type: Sequelize.INTEGER
     },
     companyId: {
       type: Sequelize.INTEGER,
@@ -30,5 +28,5 @@ module.exports = (sequelize, Sequelize) => {
     }
   });
 
-  return User;
+  return Product;
 };

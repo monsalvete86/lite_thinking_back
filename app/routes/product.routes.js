@@ -1,5 +1,5 @@
-const tutorials = require("../controllers/tutorial.controller.js");
-const { authJwt } = require("../middleware");
+const product = require("../controllers/product.controller.js");
+const { authJwt } = require("../middleware/index.js");
 
 module.exports = function(app) {
   app.use(function(req, res, next) {
@@ -10,35 +10,35 @@ module.exports = function(app) {
     next();
   });
 
-  // Get Tutorials
+  // Get Products
   app.get(
-    "/api/tutorials",
+    "/api/products",
     [authJwt.verifyToken, authJwt.isModeratorOrAdmin],
-    tutorials.findAll
+    product.findAll
   );
 
   app.post(
-    "/api/tutorials",
+    "/api/products",
     [authJwt.verifyToken, authJwt.isModeratorOrAdmin],
-    tutorials.create
+    product.create
   );
 
   app.get(
-    "/api/tutorials/:id",
+    "/api/products/:id",
     [authJwt.verifyToken, authJwt.isModeratorOrAdmin],
-    tutorials.findOne
+    product.findOne
   );
 
   app.put(
-    "/api/tutorials/:id",
+    "/api/products/:id",
     [authJwt.verifyToken, authJwt.isModeratorOrAdmin],
-    tutorials.update
+    product.update
   );
 
   app.delete(
-    "/api/tutorials/:id",
+    "/api/products/:id",
     [authJwt.verifyToken, authJwt.isModeratorOrAdmin],
-    tutorials.delete
+    product.delete
   );
 
 };
