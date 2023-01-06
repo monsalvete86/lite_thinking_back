@@ -41,6 +41,11 @@ exports.signup = (req, res) => {
 };
 
 exports.signin = (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET", true);
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header("Content-Type", "application/json");
+  res.header("Accept", "application/json");
   User.findOne({
     where: {
       username: req.body.username
