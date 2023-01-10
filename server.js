@@ -12,9 +12,7 @@ app.use(cors(corsOptions));
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*')
   res.header('Access-Control-Allow-Methods', '*')
-  res.header('Access-Control-Allow-Headers', '*')
-  res.header("Content-Type", "application/json");
-  res.header("Accept", "application/json");
+
   next()
 })
 
@@ -48,6 +46,7 @@ require('./app/routes/company.routes')(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
